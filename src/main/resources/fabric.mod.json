@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "meteor-patch-addon",
+  "version": "1.0.0",
+  "name": "Meteor Patch Addon",
+  "description": "无政府服实战增强，对标付费端核心机制",
+  "environment": "client",
+  "entrypoints": {
+    "meteor": ["com.meteorpatch.MeteorPatchAddon"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric-api": "*",
+    "minecraft": "~1.21.11",
+    "meteor-client": "*"
+  }
+}
