@@ -1,14 +1,13 @@
-import meteordevelopment.meteorclient.events.world.TickEvent;
-import meteordevelopment.orbit.EventHandler;
 package com.meteorpatch.modules;
 
+import java.util.HashMap;
+import java.util.Map;
+import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Categories;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.meteorclient.systems.modules.Modules;
-
-import java.util.HashMap;
-import java.util.Map;
+import meteordevelopment.orbit.EventHandler;
 
 public class PresetManager extends Module {
     public enum Preset {

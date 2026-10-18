@@ -1,12 +1,14 @@
-import meteordevelopment.meteorclient.events.world.TickEvent;
-import meteordevelopment.orbit.EventHandler;
 package com.meteorpatch.modules;
 
 import com.meteorpatch.utils.DamageCalc;
 import com.meteorpatch.utils.RotationUtil;
+import java.util.HashMap;
+import java.util.Map;
+import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Categories;
 import meteordevelopment.meteorclient.systems.modules.Module;
+import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -18,9 +20,6 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class CrystalAura extends Module {
     private final SettingGroup sg = settings.getDefaultGroup();

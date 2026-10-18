@@ -1,9 +1,8 @@
 package com.meteorpatch.utils;
 
+import java.util.concurrent.ThreadLocalRandom;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.packet.Packet;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 public final class PacketUtil {
     private PacketUtil() {}

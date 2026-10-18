@@ -1,9 +1,9 @@
-import meteordevelopment.meteorclient.events.world.TickEvent;
-import meteordevelopment.orbit.EventHandler;
 package com.meteorpatch.modules;
 
+import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.systems.modules.Categories;
 import meteordevelopment.meteorclient.systems.modules.Module;
+import meteordevelopment.orbit.EventHandler;
 
 public class AntiExpose extends Module {
     public AntiExpose() { super(Categories.Misc, "anti-expose", "击退削减"); }

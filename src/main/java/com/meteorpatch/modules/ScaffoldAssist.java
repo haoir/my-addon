@@ -1,12 +1,14 @@
-import meteordevelopment.meteorclient.events.world.TickEvent;
-import meteordevelopment.orbit.EventHandler;
 package com.meteorpatch.modules;
 
 import com.meteorpatch.utils.MathUtil;
 import com.meteorpatch.utils.RotationUtil;
+import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
+import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Categories;
 import meteordevelopment.meteorclient.systems.modules.Module;
+import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FallingBlock;
@@ -17,9 +19,6 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
-
-import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class ScaffoldAssist extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
