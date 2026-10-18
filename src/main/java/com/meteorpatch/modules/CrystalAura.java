@@ -1,3 +1,5 @@
+import meteordevelopment.meteorclient.events.world.TickEvent;
+import meteordevelopment.orbit.EventHandler;
 package com.meteorpatch.modules;
 
 import com.meteorpatch.utils.DamageCalc;
@@ -73,8 +75,7 @@ public class CrystalAura extends Module {
         crystalSpawnTicks.clear();
     }
 
-    @Override
-    public void onTick() {
+    @EventHandler private void onTick(TickEvent.Post event) {
         if (mc.player == null || mc.world == null) return;
         tickCounter++;
         if (placeCooldown > 0) placeCooldown--;
@@ -232,7 +233,7 @@ public class CrystalAura extends Module {
         if (!autoSwitch.get()) return false;
         for (int i = 0; i < 9; i++) {
             if (mc.player.getInventory().getStack(i).isOf(Items.END_CRYSTAL)) {
-                mc.player.getInventory().selectedSlot = i;
+                mc.player.getInventory().setSelectedSlot(i);
                 return true;
             }
         }

@@ -195,9 +195,9 @@ public class ElytraAssist extends Module {
         for (int i = 0; i < 9; i++) {
             if (mc.player.getInventory().getStack(i).isOf(Items.FIREWORK_ROCKET)) {
                 int prev = mc.player.getInventory().selectedSlot;
-                mc.player.getInventory().selectedSlot = i;
+                mc.player.getInventory().setSelectedSlot(i);
                 mc.interactionManager.interactItem(mc.player, Hand.MAIN_HAND);
-                mc.player.getInventory().selectedSlot = prev;
+                mc.player.getInventory().setSelectedSlot(prev);
                 return true;
             }
         }

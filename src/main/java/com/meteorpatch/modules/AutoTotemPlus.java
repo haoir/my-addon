@@ -1,3 +1,5 @@
+import meteordevelopment.meteorclient.events.world.TickEvent;
+import meteordevelopment.orbit.EventHandler;
 package com.meteorpatch.modules;
 
 import meteordevelopment.meteorclient.settings.*;
@@ -38,8 +40,7 @@ public class AutoTotemPlus extends Module {
     @Override
     public void onActivate() { delay = 0; }
 
-    @Override
-    public void onTick() {
+    @EventHandler private void onTick(TickEvent.Post event) {
         if (mc.player == null || mc.world == null) return;
         if (delay > 0) { delay--; return; }
 
@@ -58,7 +59,7 @@ public class AutoTotemPlus extends Module {
             if (!mc.player.getMainHandStack().isOf(Items.TOTEM_OF_UNDYING)) {
                 for (int i = 0; i < 9; i++) {
                     if (mc.player.getInventory().getStack(i).isOf(Items.TOTEM_OF_UNDYING)) {
-                        mc.player.getInventory().selectedSlot = i;
+                        mc.player.getInventory().setSelectedSlot(i);
                         delay = actionDelay.get();
                         return;
                     }

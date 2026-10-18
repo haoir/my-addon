@@ -1,3 +1,5 @@
+import meteordevelopment.meteorclient.events.world.TickEvent;
+import meteordevelopment.orbit.EventHandler;
 package com.meteorpatch.modules;
 
 import meteordevelopment.meteorclient.settings.*;
@@ -62,8 +64,7 @@ public class PresetManager extends Module {
         lastApplied = Preset.NONE;
     }
 
-    @Override
-    public void onTick() {
+    @EventHandler private void onTick(TickEvent.Post event) {
         if (preset.get() != lastApplied) {
             applyPreset(preset.get());
         }

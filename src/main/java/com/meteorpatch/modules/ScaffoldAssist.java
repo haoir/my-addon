@@ -1,3 +1,5 @@
+import meteordevelopment.meteorclient.events.world.TickEvent;
+import meteordevelopment.orbit.EventHandler;
 package com.meteorpatch.modules;
 
 import com.meteorpatch.utils.MathUtil;
@@ -88,8 +90,7 @@ public class ScaffoldAssist extends Module {
         towerPlaceDelay = 0;
     }
 
-    @Override
-    public void onTick() {
+    @EventHandler private void onTick(TickEvent.Post event) {
         if (mc.player == null || mc.world == null) return;
         if (placeCooldown > 0) placeCooldown--;
         if (towerJumpCooldown > 0) towerJumpCooldown--;
@@ -122,7 +123,7 @@ public class ScaffoldAssist extends Module {
         pendingPlaceTicks = rotationDelay.get();
         if (pendingPlaceTicks <= 0) executePendingPlace();
 
-        if (autoSwitch.get()) mc.player.getInventory().selectedSlot = slot;
+        if (autoSwitch.get()) mc.player.getInventory().setSelectedSlot(slot);
     }
 
     // === Round 8：Tower 模式核心 ===
@@ -164,7 +165,7 @@ public class ScaffoldAssist extends Module {
             RotationUtil.instantLookAt(hitVec);
         }
 
-        if (autoSwitch.get()) mc.player.getInventory().selectedSlot = slot;
+        if (autoSwitch.get()) mc.player.getInventory().setSelectedSlot(slot);
 
         // 延迟放置
         pendingPos = below;
