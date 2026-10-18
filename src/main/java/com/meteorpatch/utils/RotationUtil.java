@@ -40,7 +40,7 @@ public final class RotationUtil {
 
     public static void lookAtEntity(Entity e, double predictTicks, float maxStep) {
         if (mc.player == null || e == null) return;
-        Vec3d pos = e.getPos().add(e.getVelocity().multiply(predictTicks));
+        Vec3d pos = new Vec3d(e.getX(), e.getY(), e.getZ()).add(e.getVelocity().multiply(predictTicks));
         smoothLookAt(pos.add(0, e.getHeight() * 0.85, 0), maxStep);
     }
 

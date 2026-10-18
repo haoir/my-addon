@@ -113,8 +113,8 @@ public class CrystalAura extends Module {
 
     private Vec3d predictTargetPos(LivingEntity target) {
         double t = predictTicks.get();
-        if (t <= 0.01) return target.getPos();
-        return target.getPos().add(target.getVelocity().multiply(t));
+        if (t <= 0.01) return new Vec3d(target.getX(), target.getY(), target.getZ());
+        return new Vec3d(target.getX(), target.getY(), target.getZ()).add(target.getVelocity().multiply(t));
     }
 
     private float estimateAtDistance(double distance, float armor) {
@@ -137,13 +137,13 @@ public class CrystalAura extends Module {
 
         for (Entity e : mc.world.getEntities()) {
             if (!(e instanceof EndCrystalEntity crystal) || !crystal.isAlive()) continue;
-            Vec3d cPos = crystal.getPos();
+            Vec3d cPos = new Vec3d(crystal.getX(), crystal.getY(), crystal.getZ());
             if (mc.player.getEyePos().distanceTo(cPos) > breakR) continue;
 
             float tgtDmg = estimateAtDistance(predicted.distanceTo(cPos), target.getArmor());
             if (tgtDmg < minDmg) continue;
 
-            float selfDmg = estimateAtDistance(mc.player.getPos().distanceTo(cPos), mc.player.getArmor());
+            float selfDmg = estimateAtDistance(new Vec3d(mc.player.getX(), mc.player.getY(), mc.player.getZ()).distanceTo(cPos), mc.player.getArmor());
             // 防自杀四重检查
             if (selfDmg >= maxSelf) continue;
             if (selfDmg >= mc.player.getHealth() - 2.0f) continue;
@@ -165,7 +165,7 @@ public class CrystalAura extends Module {
 
         if (bestCrystal == null) return false;
 
-        RotationUtil.instantLookAt(bestCrystal.getPos().add(0, 0.5, 0));
+        RotationUtil.instantLookAt(new Vec3d(bestCrystal.getX(), bestCrystal.getY(), bestCrystal.getZ()).add(0, 0.5, 0));
         mc.interactionManager.attackEntity(mc.player, bestCrystal);
         mc.player.swingHand(Hand.MAIN_HAND);
         crystalSpawnTicks.remove(bestCrystal);
@@ -194,7 +194,7 @@ public class CrystalAura extends Module {
                     float tgtDmg = estimateAtDistance(predicted.distanceTo(cPos), target.getArmor());
                     if (tgtDmg < minDmg) continue;
 
-                    float selfDmg = estimateAtDistance(mc.player.getPos().distanceTo(cPos), mc.player.getArmor());
+                    float selfDmg = estimateAtDistance(new Vec3d(mc.player.getX(), mc.player.getY(), mc.player.getZ()).distanceTo(cPos), mc.player.getArmor());
                     if (selfDmg >= maxSelf) continue;
                     if (selfDmg >= mc.player.getHealth() - 2.0f) continue;
                     if (selfDmg >= tgtDmg) continue;

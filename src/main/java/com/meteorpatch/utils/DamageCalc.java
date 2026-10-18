@@ -7,7 +7,7 @@ public final class DamageCalc {
     private DamageCalc() {}
 
     public static float crystalDamage(LivingEntity target, Vec3d crystalPos) {
-        double distance = target.getPos().distanceTo(crystalPos);
+        double distance = new Vec3d(target.getX(), target.getY(), target.getZ()).distanceTo(crystalPos);
         if (distance > 12.0) return 0f;
         double exposure = 1.0 - (distance / 12.0);
         float baseDamage = (float) (exposure * exposure * 12.0 + exposure * 12.0);
